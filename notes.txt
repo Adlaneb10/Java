@@ -1,0 +1,19 @@
+public Rectangle extends Shape
+{
+	private double area;
+	private double width, height;
+	
+
+	// constructor
+	public Rectangle (double width, height)
+	{
+		setRadius(width);
+		setRadius(height);
+			
+	}
+
+	
+
+
+}
+
