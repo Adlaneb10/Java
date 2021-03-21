@@ -52,16 +52,41 @@ public class FileProcessor
     }
 
     // method designed to read the file and words in each file
-    public String readFile() throws FileNotFoundException {
+    public String readFile(String userSearch)
+    {
         String fileLine = "";
-        // try catch deployed for error catching if file is not found etc
-        Scanner scanner1 = new Scanner(fileStore);
-        while (scanner1.hasNextLine())
+        String s = null;
+
+        // try catch for error prevention
+        try
         {
-            words = scanner1.nextLine();
+            // try catch deployed for error catching if file is not found etc
+            Scanner scanner1 = new Scanner(fileStore);
+
+            while (scanner1.hasNextLine())
+            {
+                words = words + "\n" + scanner1.nextLine();
+                Scanner scanner2 = new Scanner(words);
+                // get individual words
+                while(scanner2.hasNext())
+                {
+                    s = scanner2.next();
+                    System.out.println(s);
+                }
+            }
+            // close scanner
+            scanner1.close();
+
         }
-        return fileLine;
+        catch (FileNotFoundException e)
+        {
+            System.out.println("Cannot find that file");
+            e.printStackTrace();
+        }
+        return s;
     }
+
+
 
 
 }
